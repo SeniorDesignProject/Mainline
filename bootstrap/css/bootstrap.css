@@ -293,7 +293,7 @@ html {
 }
 
 body {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.428571429;
   color: #333333;
   background-color: #ffffff;
@@ -1248,7 +1248,7 @@ pre code {
     width: 25%;
   }
   .col-lg-4 {
-    width: 33.33333333333333%;
+    width: 80%;
   }
   .col-lg-5 {
     width: 41.66666666666667%;

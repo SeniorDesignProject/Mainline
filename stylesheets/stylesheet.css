@@ -82,7 +82,7 @@ header h1 {
 
 header h2 {
   font-size: 26px;
-  color: #9ddcff;
+  color: #C8FF78;
   font-weight: normal;
   line-height: 1.3;
   width: 540px;
@@ -242,7 +242,7 @@ form {
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
   font-size: 22px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 24px;
   color: #474747;
 } 
 #main-content h2:before {
@@ -254,10 +254,10 @@ form {
 
 #main-content h3 {
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif; 
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   margin-top: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 24px;
   color: #474747;
 } 
  
