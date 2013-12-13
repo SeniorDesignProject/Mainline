@@ -1,0 +1,1 @@
+document.getElementById('stickyContent').innerHTML = document.getElementById('main').innerHTML;

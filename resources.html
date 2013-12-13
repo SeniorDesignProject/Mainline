@@ -10,27 +10,61 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" media="screen" />
 
-    <script type="text/javascript" src="javascripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-
+    <script type="text/javascript" src="js/main.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-<div class="collapse navbar-inverse navbar-collapse" id="bs-example-navbar-collapse-9">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="about.html">Team</a></li>
-            <li><a href="design.html">Design</a></li>
-            <li><a href="resources.html">Resources</a></li>
-          </ul>
-        </div>
 
     <title>Resources</title>
   </head>
 
   <body>
     <header>
+
+
+<div id="main" class="duplicate">
+    <ul class="nav">
+      <li>
+        <a href="index.html" title="Home">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-home icon-light"></i>
+          </span>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="about.html" title="About">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-leaf icon-light"></i>
+          </span>
+          <span class="text">Team</span>
+        </a>
+      </li>
+      <li>
+        <a href="design.html" title="Contact">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-phone icon-light"></i>
+          </span>
+          <span class="text">Design</span>
+        </a>
+      </li>
+      <li>
+        <a href="resources.html" title="Contact">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-phone icon-light"></i>
+          </span>
+          <span class="text">Resources</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div id="stickyContent"></div>
       <div class="inner">
         <h1>Leaf</h1>
         <h2>Welcome to the homepage for the senior design project of Chris Garry, Marco Chiang, Steven Tso, and Aaron Tye.</h2>
@@ -40,12 +74,24 @@
 
     <div id="content-wrapper">
       <div class="inner clearfix">
+        
+
         <section id="main-content">
 
-<h2>Resources</h2>
-
+          <h3>Resources</h3>
+                  
+                  <a class="awsbutton next" href="resources/pdr.pdf">PDR Presentation</a>
+                  <br></br>
+                  <a class="awsbutton next" href="resources/mdr.pdf">MDR Presentation</a>
+                  <br></br>
+                  <a class="awsbutton next" href="resources/mdr_report_draft.docx">MDR First Draft</a>
+                  <br></br>
+                  <a class="awsbutton next" href="resources/mdr_report_final.docx">MDR Final Draft</a>
+                  <br></br>
+                  <a class="awsbutton next" href="resources/mobile_design.pdf">Mobile Design</a>
         </section>
 
+        
         <aside id="sidebar">
           <a href="https://github.com/SeniorDesignProject/Mainline/zipball/master" class="button">
             <small>Download</small>

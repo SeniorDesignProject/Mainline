@@ -10,42 +10,79 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" media="screen" />
 
-    <script type="text/javascript" src="javascripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-<div class="collapse navbar-inverse navbar-collapse" id="bs-example-navbar-collapse-9">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="about.html">Team</a></li>
-            <li><a href="design.html">Design</a></li>
-            <li><a href="resources.html">Resources</a></li>
-          </ul>
-        </div>
-
     <title>Leaf by SeniorDesignProject</title>
   </head>
 
   <body>
     <header>
+
+  <div id="main" class="duplicate">
+    <ul class="nav">
+      <li>
+        <a href="index.html" title="Home">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-home icon-light"></i>
+          </span>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="about.html" title="About">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-leaf icon-light"></i>
+          </span>
+          <span class="text">Team</span>
+        </a>
+      </li>
+      <li>
+        <a href="design.html" title="Contact">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-phone icon-light"></i>
+          </span>
+          <span class="text">Design</span>
+        </a>
+      </li>
+      <li>
+        <a href="resources.html" title="Contact">
+          <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-phone icon-light"></i>
+          </span>
+          <span class="text">Resources</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div id="stickyContent"></div>
+
       <div class="inner">
         <h1>Leaf</h1>
         <h2>Welcome to the homepage for the senior design project of Chris Garry, Marco Chiang, Steven Tso, and Aaron Tye.</h2>
         <a href="https://github.com/SeniorDesignProject/Mainline" class="button"><small>View project on</small>GitHub</a>
       </div>
+  
     </header>
 
     <div id="content-wrapper">
       <div class="inner clearfix">
+
+
         <section id="main-content">
           <h3>
 <a name="welcome-to-leaf" class="anchor" href="#welcome-to-leaf"><span class="octicon octicon-link"></span></a>What is Leaf?</h3>
 
-<p>Humans are social creatures. We thrive off of meeting new people both personally and professionally. Whether we attend personal or professional networking events, establishing connections with the people we meet is important, but often cumbersome. We typically exchange business cards, phone numbers, resumes, or more often, our profiles on social networks such as LinkedIn, which can be a complicated process with large groups of people. To address these issues, we introduce Leaf. Leaf is a Bluetooth bracelet that makes connecting with people seamless. By integrating machine learning and sensor technology with the social networking capabilities of your mobile phone, Leaf can detect who you are shaking hands with and instantly initiation a connection request to that person on the social network of your choice almost effortlessly. Gone are the days of exchanging phone numbers and contact information. With Leaf, a connection is just a handshake away.</p>
-
+<p align="justify">Humans are social creatures. We thrive off of meeting new people both personally and professionally. Whether we attend personal or professional networking events, establishing connections with the people we meet is important, but often cumbersome. We typically exchange business cards, phone numbers, resumes, or more often, our profiles on social networks such as LinkedIn, which can be a complicated process with large groups of people. To address these issues, we introduce Leaf. Leaf is a Bluetooth bracelet that makes connecting with people seamless. By integrating machine learning and sensor technology with the social networking capabilities of your mobile phone, Leaf can detect who you are shaking hands with and instantly initiation a connection request to that person on the social network of your choice almost effortlessly. Gone are the days of exchanging phone numbers and contact information. With Leaf, a connection is just a handshake away.</p>
+        
 
         </section>
 
@@ -63,7 +100,6 @@
         </aside>
       </div>
     </div>
-
   
   </body>
 </html>
