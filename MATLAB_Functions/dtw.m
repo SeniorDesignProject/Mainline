@@ -13,7 +13,7 @@ function [Dist,D,k,w]=dtw(t,r)
 %        d(n,m)=(t(n)-r(m))^2;
 %    end
 %end
-d=(repmat(t(:),1,M)-repmat(r(:)',N,1)).^2; %this replaces the nested for loops from above Thanks Georg Schmitz 
+d=(repmat(t(:),1,M)-repmat(r(:),N,1)).^2; %this replaces the nested for loops from above Thanks Georg Schmitz 
 
 D=zeros(size(d));
 D(1,1)=d(1,1);
