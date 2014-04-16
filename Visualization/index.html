@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<title>Leaf</title>
+
+		<meta charset="utf-8">
+		
+		<link rel="stylesheet" type="text/css" href="stylesheets/c3.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+
+		<script type="text/javascript" src="js/d3.min.js"></script>
+		<script type="text/javascript" src="js/c3.min.js"></script>
+
+		<!--STLYING FOR D3 HTML-->
+		<style type="text/css">
+
+			svg{
+				vertical-align: middle;
+			}
+
+			div{
+				display: inline;
+			}
+			
+			.content{
+				display: block;
+				width:1000px;
+				height: 370px;
+				background: none;
+				margin: 0 auto;
+			}
+
+			#titles{
+				display: block;
+			}
+			.handshake1{
+				display: inline;
+				position: relative;
+				top:0px;
+				left: 175px;
+			}
+			.handshake2{
+				display: inline;
+				position: relative;
+				top:0px;
+				left: 550px;
+			}
+
+			h1{
+
+				font-family: 'Racing Sans One', cursive;
+
+			}
+
+		</style>
+
+	</head>
+
+
+	<body>
+
+		<!--HTML FOR D3 VISUALIZATION -->
+		<img src="images/logo.png" width="300"></img>
+		<div class="content">
+
+			<div id="titles">
+				<h1 class="handshake1"> Red Pebble </h1>			
+				<h1 class="handshake2"> White Pebble </h1>
+			</div>
+
+			<div id="chart"></div>
+			<div id="circle"></div>
+			<div id="chart2"></div>
+
+		</div>
+
+
+		<!--CODE FOR D3 VISUALIZATION-->
+		<script type="text/javascript">
+
+			/*
+			Dummy handshakes. These are just placeholders for the actual handshakes we will receive. Try to display one in the empty space to the left of circle and one on right of circle. The code below makes the circle green if they match (handshake_match is true), red if no match. handshake_match will be passed in by mobile app since it has the c code to do it. The handshakes themselves will be passed in via Node and socket.io, so assume the variables below have the necessary values and that you just need to write code to display handshake_one/two.
+			*/
+			var handshake_one = [['x', -417, -398, -393, -506, -531, -350, -24, -158, 14, -267,1,-29,-27,-9],
+								 ['y', 427, 531, 548, 150, 929, 1053, 126, -430, 15, 1028,607,464,443,459],
+								 ['z', -76,13,126,34,-372,97,-197,-114,-181,87,-31,-45,-1,-51]];
+
+			var handshake_two = [['x', -417, -398, -393, -506, -531, -350, -24, -158, 14, -267,1,-29,-27,-9],
+								 ['y', 427, 531, 548, 150, 929, 1053, 126, -430, 15, 1028,607,464,443,459],
+								 ['z', -76,13,126,34,-372,97,-197,-114,-181,87,-31,-45,-1,-51]];
+
+			var handshake_match = [true];
+
+			//************************************************************************************
+				
+			// Code to display the accelerometer data for handshake 1.
+				
+				var chart = c3.generate({
+				    bindto: '#chart',
+				    size: {
+				        height: 350,
+				        width: 420
+				    },
+				    data: {
+				        columns: [handshake_one[0],handshake_one[1],handshake_one[2]]
+				    },
+				    axis: {
+				        x: {
+				            label: {
+				                text: 'Time (100 ms)',
+				                position: 'outer-center'
+				            }
+				        },
+				        y: {
+				            label: {
+				                text: 'Acceleration (milli-g)',
+				                position: 'outer-middle'
+				            }
+				        }
+				   }
+				});
+
+			//************************************************************************************
+
+			// Code to display match circle.
+
+				//Parameters needed for drawing circle
+				var circle_radius = "60";
+				var circle_stroke = "rgba(0, 255, 0, 0.25)";
+				var circle_stroke_width = "10";
+				var opacity = "0.5";
+				var fill;
+
+				if(handshake_match[0] == true){
+					fill = "green";
+				}
+				else{
+					fill = "red";
+				}
+
+				//Set background color
+	        	d3.select("body").style("background-color", "white");//"olivedrab");
+
+	        	//Add the <svg> to the body
+	        	var svg = d3.select("#circle")
+	            .append("svg")
+	            .attr("width", "130px")
+	            .attr("height","130px");
+
+	            //Add circle to the svg and load the true/false data
+	            var circles = svg.selectAll("circle")
+	                 .data(handshake_match)
+	                 .enter()
+	                 .append("circle");
+
+	            //Set properties of the circle
+	            circles.attr("cy", "50%")
+			       .attr("cx", "50%")
+			       .attr("r", circle_radius)
+			       .attr("stroke", circle_stroke)
+			       .attr("stroke-width", circle_stroke_width)
+			       .attr("opacity", opacity)
+			       .attr("fill", fill);
+			//END displaying circle, being accelerometer data
+
+			//************************************************************************************
+
+			// Code to display the accelerometer data for handshake 2.
+				var chart2 = c3.generate({
+				    bindto: '#chart2',
+				    size: {
+				        height: 350,
+				        width: 420
+				    },
+				    data: {
+				        columns: [handshake_two[0],handshake_two[1],handshake_two[2]]
+
+				    },
+				    axis: {
+				        x: {
+				            label: {
+				                text: 'Time (100 ms)',
+				                position: 'outer-center'
+				            }
+				        },
+				        y: {
+				            label: {
+				                text: 'Acceleration (milli-g)',
+				                position: 'outer-middle'
+				            }
+				        }
+				   	}
+				});
+
+        </script>
+
+	</body>
+
+</html>
