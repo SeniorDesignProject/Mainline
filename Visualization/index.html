@@ -93,6 +93,24 @@
 
 			var handshake_match = [true];
 
+			//Parameters needed for drawing circle
+			var circle_radius = "60";
+			var circle_stroke = "rgba(0, 255, 0, 0.25)";
+			var circle_stroke_width = "10";
+			var opacity = "0.5";
+			var fill;
+			var svg;
+
+			//Set background color
+	        d3.select("body").style("background-color", "white");//"olivedrab");
+
+	        //Add the <svg> to the body
+	        svg = d3.select("#circle")
+	            .append("svg")
+	            .attr("width", "130px")
+	            .attr("height","130px");
+
+
 			//************************************************************************************
 				
 			// Code to display the accelerometer data for handshake 1.
@@ -126,12 +144,6 @@
 
 			// Code to display match circle.
 
-				//Parameters needed for drawing circle
-				var circle_radius = "60";
-				var circle_stroke = "rgba(0, 255, 0, 0.25)";
-				var circle_stroke_width = "10";
-				var opacity = "0.5";
-				var fill;
 
 				if(handshake_match[0] == true){
 					fill = "green";
@@ -139,15 +151,6 @@
 				else{
 					fill = "red";
 				}
-
-				//Set background color
-	        	d3.select("body").style("background-color", "white");//"olivedrab");
-
-	        	//Add the <svg> to the body
-	        	var svg = d3.select("#circle")
-	            .append("svg")
-	            .attr("width", "130px")
-	            .attr("height","130px");
 
 	            //Add circle to the svg and load the true/false data
 	            var circles = svg.selectAll("circle")
