@@ -102,13 +102,13 @@
 			var svg;
 
 			//Set background color
-	        d3.select("body").style("background-color", "white");//"olivedrab");
-
-	        //Add the <svg> to the body
-	        svg = d3.select("#circle")
-	            .append("svg")
-	            .attr("width", "130px")
-	            .attr("height","130px");
+		        d3.select("body").style("background-color", "white");//"olivedrab");
+	
+		        //Add the <svg> to the body
+		        svg = d3.select("#circle")
+		            .append("svg")
+		            .attr("width", "130px")
+		            .attr("height","130px");
 
 
 			//************************************************************************************
@@ -152,20 +152,20 @@
 					fill = "red";
 				}
 
-	            //Add circle to the svg and load the true/false data
-	            var circles = svg.selectAll("circle")
-	                 .data(handshake_match)
-	                 .enter()
-	                 .append("circle");
-
-	            //Set properties of the circle
-	            circles.attr("cy", "50%")
-			       .attr("cx", "50%")
-			       .attr("r", circle_radius)
-			       .attr("stroke", circle_stroke)
-			       .attr("stroke-width", circle_stroke_width)
-			       .attr("opacity", opacity)
-			       .attr("fill", fill);
+				//Add circle to the svg and load the true/false data
+				var circles = svg.selectAll("circle")
+		                	.data(handshake_match)
+		                	.enter()
+		                	.append("circle");
+	
+				//Set properties of the circle
+				circles.attr("cy", "50%")
+				       .attr("cx", "50%")
+				       .attr("r", circle_radius)
+				       .attr("stroke", circle_stroke)
+				       .attr("stroke-width", circle_stroke_width)
+				       .attr("opacity", opacity)
+				       .attr("fill", fill);
 			//END displaying circle, being accelerometer data
 
 			//************************************************************************************
@@ -197,7 +197,7 @@
 				   	}
 				});
 
-        </script>
+        	</script>
 
 	</body>
 
