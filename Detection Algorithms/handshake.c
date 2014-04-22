@@ -79,7 +79,6 @@
 				}
 
 				cross_correlate[delay+delay_max] = numerator/sqrt(sqr_series_x*sqr_series_y);
-
 			}
 
 		return cross_correlate;
@@ -161,7 +160,7 @@
 		//Determine if a correlation coefficient >XCORR_THRESH exists.
 			int i;
 			for(i=0; i<SERIES_X_SIZE*2; i++){
-				if(coefficients[i] > XCORR_THRESH){
+				if(fabs(coefficients[i]) > XCORR_THRESH){
 					return MATCH;
 				}
 			}
@@ -218,10 +217,8 @@
 	int main(){
 
 		//TEST HANDSHAKE_MATCH==============================================================
-			int handshake_signature_x[14] = {-417,-398,-393,-506,-531,-350,-24,-158,14,-267,
-												1,-29,-27,-9};
-			int handshake_test_x[14] 	 = {-417,-398,-393,-506,-531,-350,-24,-158,14,-267,
-												1,-29,-27,-9};
+			int handshake_signature_x[14] = {-58,-34,-30,-28,-28,-30,-36,-60,-42,-38,-16,-32,-36,-44};
+			int handshake_test_x[14] 	 = { -20,-28,-32,-26,-28,-24, 8, -32,-32,-36,-28,-18,-18,-36};
 
 		    if(handshake_match(handshake_signature_x, handshake_test_x)){
 		    	printf("\nRESULT: MATCH.\n");
