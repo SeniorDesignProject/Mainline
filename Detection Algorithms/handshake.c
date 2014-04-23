@@ -79,6 +79,7 @@
 				}
 
 				cross_correlate[delay+delay_max] = numerator/sqrt(sqr_series_x*sqr_series_y);
+				printf("%f\n",cross_correlate[delay+delay_max]);
 			}
 
 		return cross_correlate;
@@ -152,7 +153,7 @@
 
 
 //LIBRARY FUNCTIONS=========================================================================
-	int handshake_match(int *series_x, int *series_y){
+	int handshake_match_xcorr(int *series_x, int *series_y){
 
 		//Compute the cross correlation coefficients
 			double *coefficients = cross_correlation(series_x,series_y);
@@ -168,7 +169,7 @@
 		return NO_MATCH;
 	}
 
-	int handshake_detect(int **handshake_test){
+	int handshake_match_dtw(int **handshake_test, int **handshake_signature){
 
 	    int i, distance, *table, **sample, handshake_sig_size = WINDOW_SIZE;
 
@@ -216,36 +217,46 @@
 //TEST======================================================================================
 	int main(){
 
-		//TEST HANDSHAKE_MATCH==============================================================
-			int handshake_signature_x[14] = {-58,-34,-30,-28,-28,-30,-36,-60,-42,-38,-16,-32,-36,-44};
-			int handshake_test_x[14] 	 = { -20,-28,-32,-26,-28,-24, 8, -32,-32,-36,-28,-18,-18,-36};
+		//TEST HANDSHAKE_MATCH_XCORR==============================================================
 
-		    if(handshake_match(handshake_signature_x, handshake_test_x)){
-		    	printf("\nRESULT: MATCH.\n");
+			int test_xcorr_1[14] = {-1020,-1774,-972,34,294,-498,-1796,-1034,432,-1144,-1892,-1482,-508,-1176};
+			int test_xcorr_2[14] = {-1014,-1166,-920,64,148,-734,-1024,-1012,-1856,366,-1842,-1330,-108,-1746};
+
+		    if(handshake_match_xcorr(test_xcorr_1, test_xcorr_2)){
+		    	printf("\nXCORR RESULT: MATCH.\n");
 		    }
 		    else{
-		    	printf("\nRESULT: NO MATCH.\n");
+		    	printf("\nXCORR RESULT: NO MATCH.\n");
 		    }
-		//END TEST HANDSHAKE_MATCH==========================================================
+		//END TEST HANDSHAKE_MATCH_XCORR==========================================================
 
 
-		//TEST HANDSHAKE_DETECT=============================================================
-		    int **handshake_sig = allocAccBuf(WINDOW_SIZE);
+		//TEST HANDSHAKE_MATCH_DTW================================================================
+		    int test_dtw_1[14][3] =  {{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1},{1,1,1}};
+			int test_dtw_2[14][3] 	 =  {{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000},{-1000,-1000,-1000}};
+
+		    int **handshake_one = allocAccBuf(WINDOW_SIZE);
+		    int **handshake_two = allocAccBuf(WINDOW_SIZE);
 		    int i;
+
 		    for(i=0; i<WINDOW_SIZE;i++){
-			        handshake_sig[i][X] = handshake_signature[i][X];
-			        handshake_sig[i][Y] = handshake_signature[i][Y];
-			        handshake_sig[i][Z] = handshake_signature[i][Z];
+			        handshake_one[i][X] = test_dtw_1[i][X];
+			        handshake_one[i][Y] = test_dtw_1[i][Y];
+			        handshake_one[i][Z] = test_dtw_1[i][Z];
+
+			        handshake_two[i][X] = test_dtw_2[i][X];
+			        handshake_two[i][Y] = test_dtw_2[i][Y];
+			        handshake_two[i][Z] = test_dtw_2[i][Z];
 			}
 
-			//See if function detects our reference handshake as handshake.
-		    if(handshake_detect(handshake_sig)){
-		    	printf("\nRESULT: HANDSHAKE DETECTED.\n");
+			//See if function detects two handshakes as a match.
+		    if(handshake_match_dtw(handshake_one, handshake_two)){
+		    	printf("\nDTW RESULT: MATCH.\n");
 		    }
 		    else{
-		    	printf("\nRESULT: NO HANDSHAKE DETECTED.\n");
+		    	printf("\nDTW RESULT: NO MATCH.\n");
 		    }
-		//END TEST HANDSHAKE_DETECT=========================================================
+		//END TEST HANDSHAKE_MATCH_DTW=============================================================
 
 		return 0;
 	 }
