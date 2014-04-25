@@ -33,10 +33,8 @@
 		double sum_y = 0.0;
 		double mean_x = 0.0;
 		double mean_y = 0.0;
-		double sqr_series_x = 0.0;
-		double sqr_series_y = 0.0;
 		int delay_max = SERIES_X_SIZE;
-		double *cross_correlate = (double*)malloc(delay_max*2*sizeof(double));
+		double *cross_correlate = (double*)malloc(((delay_max*2)+1)*sizeof(double));
 
 		//Calculate the sum of each series
 			int z;
@@ -50,27 +48,30 @@
 			mean_y = sum_y/SERIES_Y_SIZE;
 
 		//Compute cross-correlate coefficients
-			int delay;
-			for(delay = -delay_max; delay<delay_max; delay++){
+			double term_1, term_2, numerator;
+			double sqr_series_x = 0.0;
+			double sqr_series_y = 0.0;
+			int delay, i;
+			for(delay = -delay_max; delay<=delay_max; delay++){
 
-				double numerator = 0;
+				numerator = 0;
 				sqr_series_x = 0;
 				sqr_series_y = 0;
 
-				for(int i =0; i<SERIES_X_SIZE; i++){
+				for(i =0; i<SERIES_X_SIZE; i++){
 
-					//Skip cofficients with out of bound indicies
-					int j = i + delay;
+					//Assume cofficients with out of bound indicies have x[i]=0, y[i]=0
+					int j = i - delay;
 					if (j < 0 || j >= SERIES_X_SIZE){
-						double term_1 = (series_x[i]-mean_x);
-						double term_2 = (-1*mean_y);	
+						term_1 = (series_x[i]-mean_x);
+						term_2 = (-1*mean_y);	
 						numerator += term_1*term_2;
 						sqr_series_x += term_1*term_1;
 						sqr_series_y += term_2*term_2;			
 					}
 					else{
-						double term_1 = (series_x[i]-mean_x);
-						double term_2 = (series_y[j]-mean_y);	
+						term_1 = (series_x[i]-mean_x);
+						term_2 = (series_y[j]-mean_y);	
 						numerator += term_1*term_2;
 						sqr_series_x += term_1*term_1;
 						sqr_series_y += term_2*term_2;
@@ -79,7 +80,7 @@
 				}
 
 				cross_correlate[delay+delay_max] = numerator/sqrt(sqr_series_x*sqr_series_y);
-				printf("%f\n",cross_correlate[delay+delay_max]);
+				printf("delay:%d correlate:%f\n",delay, cross_correlate[delay+delay_max]);
 			}
 
 		return cross_correlate;

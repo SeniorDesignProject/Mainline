@@ -44,8 +44,9 @@
 =====================================================================*/
 	int handshake_match_dtw(int **accel_data,int **accel_data_2);
 
-
-//For allocating/deallocating matrix of n rows by 3 columns size
+/*====================================================================
+	For allocating/deallocating matrix of n rows by 3 columns in size
+====================================================================*/
 	int** allocAccBuf(int len);
 	void releaseAccBuf(int** p, int len);
 
