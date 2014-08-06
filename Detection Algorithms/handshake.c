@@ -8,9 +8,7 @@
 
 	License:
 
-		This code is for education purposes only as part of the senior 
-		design project of the Electrical and Computer Engineering Department
-		at the University of Massachusetts Amherst.
+		This code is for education purposes only.
 
 		Reference for allocAccBuf(), releaseAccBuf, DTWdistance():
 			Jiayang Liu, Zhen Wang, Lin Zhong, Jehan Wickramasuriya, and Venu Vasudevan, 
